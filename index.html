@@ -1,0 +1,572 @@
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Happy Birthday ANGEL</title>  
+    <style>  
+        * {  
+            margin: 0;  
+            padding: 0;  
+            box-sizing: border-box;  
+        }  body {  
+        background: linear-gradient(135deg, #ffb6d9, #ffdde9, #ffccdd);  
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+        text-align: center;  
+        padding: 20px;  
+        color: #d6006e;  
+        overflow-x: hidden;  
+        min-height: 100vh;  
+    }  
+      
+    .container {  
+        max-width: 800px;  
+        margin: 0 auto;  
+        position: relative;  
+        z-index: 10;  
+    }  
+      
+    h1 {  
+        font-size: 3rem;  
+        margin-top: 20px;  
+        color: #ff0066;  
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);  
+        animation: pulse 2s infinite alternate;  
+    }  
+      
+    @keyframes pulse {  
+        from { transform: scale(1); }  
+        to { transform: scale(1.05); }  
+    }  
+      
+    .birthday-cake {  
+        margin: 20px auto;  
+        font-size: 80px;  
+        animation: bounce 2s infinite alternate;  
+    }  
+      
+    @keyframes bounce {  
+        0% { transform: translateY(0); }  
+        100% { transform: translateY(-15px); }  
+    }  
+      
+    .hearts, .confetti {  
+        position: fixed;  
+        top: 0;  
+        left: 0;  
+        width: 100%;  
+        height: 100%;  
+        overflow: hidden;  
+        pointer-events: none;  
+        z-index: 1;  
+    }  
+      
+    .heart, .confetti-piece {  
+        position: absolute;  
+        bottom: -10px;  
+        font-size: 24px;  
+        animation: floatUp 6s linear infinite;  
+        opacity: 0.8;  
+    }  
+      
+    .confetti-piece {  
+        font-size: 28px;  
+        animation-duration: 5s;  
+    }  
+      
+    @keyframes floatUp {  
+        0% {   
+            transform: translateY(0) rotate(0deg) scale(1);   
+            opacity: 0.8;   
+        }  
+        100% {   
+            transform: translateY(-100vh) rotate(360deg) scale(1.5);   
+            opacity: 0;   
+        }  
+    }  
+      
+    .msg {  
+        background: rgba(255, 255, 255, 0.9);  
+        padding: 30px;  
+        border-radius: 25px;  
+        box-shadow: 0 10px 30px rgba(255, 138, 194, 0.3);  
+        margin-top: 20px;  
+        font-size: 1.2rem;  
+        line-height: 1.6;  
+        backdrop-filter: blur(5px);  
+        border: 2px solid #ff8ac2;  
+    }  
+      
+    .gang-name {  
+        color: #ff3399;  
+        font-size: 1.8rem;  
+        margin: 15px 0;  
+        text-transform: uppercase;  
+        letter-spacing: 1px;  
+    }  
+      
+    .member-msg {  
+        margin-top: 12px;  
+        color: #ff0066;  
+        font-weight: bold;  
+        padding: 8px;  
+        background: rgba(255, 240, 245, 0.7);  
+        border-radius: 10px;  
+        margin-bottom: 8px;  
+        border-left: 4px solid #ff3399;  
+    }  
+      
+    .countdown {  
+        margin-top: 30px;  
+        font-size: 1.8rem;  
+        color: #ff3399;  
+        background: rgba(255, 255, 255, 0.8);  
+        padding: 20px;  
+        border-radius: 15px;  
+        display: inline-block;  
+        box-shadow: 0 5px 15px rgba(255, 102, 153, 0.2);  
+    }  
+      
+    .countdown-box {  
+        display: inline-block;  
+        margin: 0 10px;  
+        padding: 10px;  
+        background: #ff0066;  
+        color: white;  
+        border-radius: 10px;  
+        min-width: 80px;  
+    }  
+      
+    .countdown-number {  
+        font-size: 2.5rem;  
+        font-weight: bold;  
+        display: block;  
+    }  
+      
+    .countdown-label {  
+        font-size: 1rem;  
+        display: block;  
+        margin-top: 5px;  
+    }  
+      
+    .audio-controls {  
+        margin-top: 25px;  
+        padding: 15px;  
+        background: rgba(255, 255, 255, 0.8);  
+        border-radius: 15px;  
+        display: inline-block;  
+    }  
+      
+    .control-btn {  
+        background: linear-gradient(to right, #ff3399, #ff0066);  
+        color: white;  
+        border: none;  
+        padding: 12px 25px;  
+        border-radius: 50px;  
+        cursor: pointer;  
+        font-size: 1rem;  
+        margin: 0 8px;  
+        transition: all 0.3s;  
+        box-shadow: 0 4px 8px rgba(255, 51, 153, 0.3);  
+    }  
+      
+    .control-btn:hover {  
+        transform: translateY(-3px);  
+        box-shadow: 0 6px 12px rgba(255, 51, 153, 0.4);  
+    }  
+      
+    .footer {  
+        margin-top: 30px;  
+        padding: 15px;  
+        color: #ff3399;  
+        font-size: 1.2rem;  
+        background: rgba(255, 255, 255, 0.7);  
+        border-radius: 15px;  
+    }  
+      
+    .birthday-message {  
+        position: fixed;  
+        top: 0;  
+        left: 0;  
+        width: 100%;  
+        height: 100%;  
+        background: rgba(255, 0, 102, 0.9);  
+        display: none;  
+        justify-content: center;  
+        align-items: center;  
+        z-index: 1000;  
+        flex-direction: column;  
+    }  
+      
+    .birthday-text {  
+        font-size: 4rem;  
+        color: white;  
+        text-align: center;  
+        animation: celebrate 2s infinite alternate;  
+        text-shadow: 0 0 20px gold;  
+    }  
+      
+    @keyframes celebrate {  
+        0% { transform: scale(1); }  
+        50% { transform: scale(1.2); }  
+        100% { transform: scale(1); }  
+    }  
+      
+    /* Responsive Design */  
+    @media (max-width: 768px) {  
+        h1 {  
+            font-size: 2.2rem;  
+        }  
+          
+        .msg {  
+            padding: 20px;  
+            font-size: 1.1rem;  
+        }  
+          
+        .countdown-box {  
+            margin: 0 5px;  
+            min-width: 60px;  
+        }  
+          
+        .countdown-number {  
+            font-size: 1.8rem;  
+        }  
+          
+        .birthday-cake {  
+            font-size: 60px;  
+        }  
+          
+        .birthday-text {  
+            font-size: 2.5rem;  
+        }  
+    }  
+      
+    @media (max-width: 480px) {  
+        h1 {  
+            font-size: 1.8rem;  
+        }  
+          
+        .msg {  
+            padding: 15px;  
+            font-size: 1rem;  
+        }  
+          
+        .countdown {  
+            font-size: 1.2rem;  
+        }  
+          
+        .countdown-box {  
+            margin: 0 3px;  
+            min-width: 50px;  
+            padding: 5px;  
+        }  
+          
+        .countdown-number {  
+            font-size: 1.5rem;  
+        }  
+          
+        .control-btn {  
+            padding: 10px 15px;  
+            font-size: 0.9rem;  
+            margin: 5px;  
+        }  
+    }  
+</style>
+
+</head>  
+<body>  
+    <!-- Birthday Celebration Overlay (Hidden until countdown ends) -->  
+    <div class="birthday-message" id="birthdayOverlay">  
+        <div class="birthday-text">🎂 HAPPY BIRTHDAY ANGEL! 🎉</div>  
+        <div style="font-size: 2rem; color: gold; margin-top: 30px;">Wishing you the most wonderful day! 💖</div>  
+        <button class="control-btn" onclick="closeCelebration()" style="margin-top: 30px;">Continue Celebration</button>  
+    </div>  <!-- Animated Background Elements -->  
+<div class="hearts" id="heartsContainer"></div>  
+<div class="confetti" id="confettiContainer"></div>  
+  
+<!-- Main Content -->  
+<div class="container">  
+    <h1>🎉 Happy Birthday ANGEL 🎂</h1>  
+    <div class="birthday-cake">🎂</div>  
+      
+    <div class="msg">  
+        <p>We hope you have a wonderful birthday!<br>  
+        We wish you a day filled with joy, laughter, and blessings.<br><br>  
+          
+        It may be your birthday, but you are a gift to us as...</p>  
+          
+        <div class="gang-name">ABAKOBOTSI GANG 👭</div>  
+          
+        <p>It's always a treat to wish happy birthday to someone so sweet 💖<br>  
+        Many happy returns of the day!<br><br>  
+          
+        We are praying 🙏 for the Lord to guide your steps and bless you abundantly ❤<br><br></p>  
+          
+        <div class="member-msg">Aurole: My best friend, you light up every room 💕</div>  
+        <div class="member-msg">Olga: Sweet heart, you deserve all the happiness 💖</div>  
+        <div class="member-msg">Smith: You're so funny and always make us laugh 🤣😂😂</div>  
+        <div class="member-msg">Shema: You bring so much joy to our lives 😄</div>  
+        <div class="member-msg">Albine: My best friend, thank you for being you 💕💖</div>  
+        <div class="member-msg">Chellia: I love you more my girl, you're amazing 😘😘😘</div>  
+          
+        <br>  
+        <p><b>We love you 💕 more than words can say!</b><br>  
+        <small>December 12 — Happy Birthday Queen 👑</small></p>  
+    </div>  
+      
+    <!-- Countdown Timer -->  
+    <div class="countdown">  
+        <p>Countdown to Angel's Birthday:</p>  
+        <div>  
+            <div class="countdown-box">  
+                <span class="countdown-number" id="days">00</span>  
+                <span class="countdown-label">Days</span>  
+            </div>  
+            <div class="countdown-box">  
+                <span class="countdown-number" id="hours">00</span>  
+                <span class="countdown-label">Hours</span>  
+            </div>  
+            <div class="countdown-box">  
+                <span class="countdown-number" id="minutes">00</span>  
+                <span class="countdown-label">Minutes</span>  
+            </div>  
+            <div class="countdown-box">  
+                <span class="countdown-number" id="seconds">00</span>  
+                <span class="countdown-label">Seconds</span>  
+            </div>  
+        </div>  
+    </div>  
+      
+    <!-- Audio Controls -->  
+    <div class="audio-controls">  
+        <p>🎵 Birthday Music 🎵</p>  
+        <button class="control-btn" onclick="toggleAudio()">🔊 Play/Pause</button>  
+        <button class="control-btn" onclick="changeVolume(0.2)">🔈 Volume -</button>  
+        <button class="control-btn" onclick="changeVolume(0.8)">🔊 Volume +</button>  
+        <!-- added share button -->  
+        <button class="control-btn" onclick="sharePage()">📤 Share</button>  
+    </div>  
+      
+    <!-- Footer -->  
+    <div class="footer">  
+        Made with 💖 by ABAKOBOTSI GANG for Angel's Special Day  
+    </div>  
+</div>  
+  
+<!-- Birthday Audio -->  
+<audio id="birthdayAudio" loop>  
+    <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-to-you-443.mp3" type="audio/mpeg">  
+    <source src="https://www.soundjay.com/human/happy-birthday-song-01.mp3" type="audio/mpeg">  
+    Your browser does not support the audio element.  
+</audio>  
+  
+<script>  
+    // Initialize variables  
+    const birthdayAudio = document.getElementById('birthdayAudio');  
+    const birthdayOverlay = document.getElementById('birthdayOverlay');  
+    const heartsContainer = document.getElementById('heartsContainer');  
+    const confettiContainer = document.getElementById('confettiContainer');  
+      
+    // Set the birthday date (December 12 of current year)  
+    const currentYear = new Date().getFullYear();  
+    let birthdayDate = new Date(currentYear, 11, 12); // December is month 11 (0-indexed)  
+      
+    // If birthday has passed this year, set to next year  
+    if (new Date() > birthdayDate) {  
+        birthdayDate = new Date(currentYear + 1, 11, 12);  
+    }  
+      
+    // Create animated hearts  
+    function createHearts() {  
+        const heartEmojis = ['💗', '💖', '💕', '💓', '💞', '💝', '🎀', '🌸', '🎁'];  
+          
+        for (let i = 0; i < 30; i++) {  
+            const heart = document.createElement('div');  
+            heart.className = 'heart';  
+            heart.innerHTML = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];  
+            heart.style.left = Math.random() * 100 + '%';  
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';  
+            heart.style.animationDelay = Math.random() * 5 + 's';  
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';  
+            heartsContainer.appendChild(heart);  
+        }  
+    }  
+      
+    // Create animated confetti  
+    function createConfetti() {  
+        const confettiEmojis = ['🎉', '🎊', '✨', '🥳', '🎈', '🎁', '🌟', '💫', '❤'];  
+          
+        for (let i = 0; i < 25; i++) {  
+            const confetti = document.createElement('div');  
+            confetti.className = 'confetti-piece';  
+            confetti.innerHTML = confettiEmojis[Math.floor(Math.random() * confettiEmojis.length)];  
+            confetti.style.left = Math.random() * 100 + '%';  
+            confetti.style.fontSize = (Math.random() * 15 + 20) + 'px';  
+            confetti.style.animationDelay = Math.random() * 4 + 's';  
+            confetti.style.animationDuration = (Math.random() * 3 + 3) + 's';  
+            confettiContainer.appendChild(confetti);  
+        }  
+    }  
+      
+    // Countdown Timer  
+    function updateCountdown() {  
+        const now = new Date().getTime();  
+        const distance = birthdayDate - now;  
+          
+        // Calculate days, hours, minutes, seconds  
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));  
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));  
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));  
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);  
+          
+        // Update display  
+        document.getElementById('days').textContent = days.toString().padStart(2, '0');  
+        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');  
+        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');  
+        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');  
+          
+        // If the countdown is over  
+        if (distance < 0) {  
+            clearInterval(countdownInterval);  
+            document.querySelector('.countdown').innerHTML = '<div style="font-size: 2.5rem; color: #ff0066;">🎉 TODAY IS ANGEL\'S BIRTHDAY! 🎂</div>';  
+            showBirthdayCelebration();  
+        }  
+    }  
+      
+    // Show birthday celebration  
+    function showBirthdayCelebration() {  
+        birthdayOverlay.style.display = 'flex';  
+        document.body.style.overflow = 'hidden';  
+          
+        // Play birthday audio at full volume  
+        birthdayAudio.volume = 1;  
+        birthdayAudio.play().catch(e => console.log("Audio play failed:", e));  
+          
+        // Add extra celebration effects  
+        createExtraCelebration();  
+    }  
+      
+    // Close birthday celebration overlay  
+    function closeCelebration() {  
+        birthdayOverlay.style.display = 'none';  
+        document.body.style.overflow = 'auto';  
+    }  
+      
+    // Create extra celebration elements  
+    function createExtraCelebration() {  
+        // Add floating birthday messages  
+        const messages = ['HAPPY BIRTHDAY!', 'YOU ARE AMAZING!', 'BEST WISHES!', 'ENJOY YOUR DAY!', 'WE LOVE YOU!'];  
+          
+        for (let i = 0; i < 10; i++) {  
+            setTimeout(() => {  
+                const message = document.createElement('div');  
+                message.innerHTML = messages[Math.floor(Math.random() * messages.length)];  
+                message.style.position = 'fixed';  
+                message.style.left = Math.random() * 80 + 10 + '%';  
+                message.style.top = '100%';  
+                message.style.fontSize = Math.random() * 20 + 20 + 'px';  
+                message.style.color = ['#ff0066', '#ff3399', '#ff66b2', '#ff9900', '#ffcc00'][Math.floor(Math.random() * 5)];  
+                message.style.fontWeight = 'bold';  
+                message.style.zIndex = '999';  
+                message.style.textShadow = '2px 2px 4px rgba(0,0,0,0.3)';  
+                message.style.animation = `floatUp ${Math.random() * 3 + 3}s linear forwards`;  
+                document.body.appendChild(message);  
+                  
+                // Remove after animation  
+                setTimeout(() => {  
+                    message.remove();  
+                }, 6000);  
+            }, i * 500);  
+        }  
+    }  
+      
+    // Audio controls  
+    function toggleAudio() {  
+        if (birthdayAudio.paused) {  
+            birthdayAudio.play().catch(e => console.log("Audio play failed:", e));  
+        } else {  
+            birthdayAudio.pause();  
+        }  
+    }  
+      
+    function changeVolume(level) {  
+        birthdayAudio.volume = Math.max(0, Math.min(1, birthdayAudio.volume + (level - 0.5)));  
+    }  
+
+    // added share function
+    function sharePage() {
+        const shareData = {
+            title: document.title,
+            text: "Happy Birthday ANGEL — check this out!",
+            url: location.href
+        };
+
+        if (navigator.share) {
+            navigator.share(shareData).catch(err => console.log("Share failed:", err));
+            return;
+        }
+
+        // fallback: copy URL to clipboard
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(location.href)
+                .then(() => alert("Page link copied to clipboard"))
+                .catch(err => console.log("Copy failed:", err));
+        } else {
+            // last-resort fallback
+            const tmp = document.createElement('input');
+            tmp.value = location.href;
+            document.body.appendChild(tmp);
+            tmp.select();
+            try { document.execCommand('copy'); alert("Page link copied to clipboard"); }
+            catch (e) { console.log("Copy fallback failed:", e); }
+            tmp.remove();
+        }
+    }  
+      
+    // make countdownInterval accessible to updateCountdown()
+    let countdownInterval;
+
+    // Initialize page  
+    function initPage() {  
+        // Create background animations  
+        createHearts();  
+        createConfetti();  
+          
+        // Start countdown timer  
+        updateCountdown();  
+        countdownInterval = setInterval(updateCountdown, 1000);  
+          
+        // Try to play audio automatically (may require user interaction on some browsers)  
+        setTimeout(() => {  
+            birthdayAudio.volume = 0.5;  
+            birthdayAudio.play().catch(e => console.log("Autoplay prevented, user interaction required"));  
+        }, 1000);  
+          
+        // Add floating elements periodically  
+        setInterval(() => {  
+            if (Math.random() > 0.7) {  
+                const extra = document.createElement('div');  
+                extra.className = 'heart';  
+                extra.innerHTML = ['🎂', '🎁', '💝', '🎀', '🌸'][Math.floor(Math.random() * 5)];  
+                extra.style.left = Math.random() * 100 + '%';  
+                extra.style.fontSize = (Math.random() * 25 + 15) + 'px';  
+                extra.style.animationDelay = '0s';  
+                extra.style.animationDuration = (Math.random() * 3 + 4) + 's';  
+                heartsContainer.appendChild(extra);  
+                  
+                setTimeout(() => {  
+                    if (extra.parentNode) extra.remove();  
+                }, 7000);  
+            }  
+        }, 1500);  
+          
+        // Console greeting  
+        console.log('%c🎂 HAPPY BIRTHDAY ANGEL! 🎉', 'color: #ff0066; font-size: 24px; font-weight: bold;');  
+        console.log('%cWishing you an amazing day filled with joy and laughter!', 'color: #ff3399; font-size: 18px;');  
+    }  
+      
+    // Start everything when page loads  
+    window.onload = initPage;  
+</script>
+
+</body>  
+</html>
